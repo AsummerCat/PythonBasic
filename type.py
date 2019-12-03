@@ -19,9 +19,13 @@ tinylist = [123, 'runoob']
 # 新增
 list.append("cc")
 print(list)
-# 删除
+# 删除 1
 list.remove(786)
+# 删除 2
+del list[3]
+print("删除")
 print(list)
+
 # 拼接
 print(list + tinylist)
 
@@ -133,3 +137,11 @@ for (key, value) in dict.items():
 # 遍历字典项
 for kv in dict.items():
     print(kv)
+
+
+'''
+遍历list 获取下标 函数enumerate
+'''
+list = ['abcd', 786, 2.23, 'runoob', 70.2]
+for se,ai in enumerate(list):
+    print(se,ai)
