@@ -106,3 +106,5 @@ f-string 新格式化语句 3.6 -3.8
 '''
 test='测试哦'
 print(f'hello{test}')
+
+
