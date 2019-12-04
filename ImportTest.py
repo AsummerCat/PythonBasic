@@ -13,12 +13,47 @@
 import sys
 
 print('================Python import mode==========================')
-print ('命令行参数为:')
+print('命令行参数为:')
 for i in sys.argv:
-    print (i)
-print ('\n python 路径为',sys.path)
+    print(i)
+print('\n python 路径为', sys.path)
 
-from sys import argv, path  # 导入特定的成员
+from sys import path  # 导入特定的成员
 
 print('================python from import===================================')
 print('path:', path)  # 因为已经导入path成员，所以此处引用时不需要加sys.path
+
+'''
+调用其他模块
+'''
+import function
+
+# from function import add 指定函数调用
+
+print(function.add(1, 2))
+
+'''
+如果在当前页常用还可以将函数赋值给var
+'''
+addTest = function.add
+print(addTest(1, 2))
+
+'''
+__name__属性 来判断是否在当前模块运行
+'''
+if __name__ == '__main__':
+    print('程序自身在运行')
+else:
+    print('我来自另一模块')
+
+'''
+dir()  内置的函数 dir() 可以找到模块内定义的所有名称。以一个字符串列表的形式返回
+'''
+print(dir(sys))
+'''
+dir() 不给参数能获取到当前模块的参数
+'''
+a=5
+print(dir())
+del a
+print(dir())

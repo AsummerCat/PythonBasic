@@ -82,4 +82,5 @@ print([3 * x for x in vec])
 questions = ['name', 'quest', 'favorite color']
 answers = ['lancelot', 'the holy grail', 'blue']
 for q, a in zip(questions, answers):
-    print('What is your {0}?  It is {1}.'.format(q, a))
+    result1 = 'What is your {0}?  It is {1}.'.format(q, a)
+    print(result1)
