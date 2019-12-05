@@ -15,6 +15,7 @@ https://www.runoob.com/python3/python3-inputoutput.html
 # 需要导入模块
 import codecs
 
+
 # 写入文件
 f = codecs.open("D:/pythonDdemo/basic/fileTest.txt", "w+", encoding='utf-8')
 wText = "输出语句转换UTF-8\n"
@@ -56,3 +57,10 @@ print(num)
 # 关闭打开的文件
 f.close()
 
+
+import os
+
+print(os.path)
+print(os.pipe())
+# 获取当前目录下的文件列表
+print(os.listdir("D:/pythonDdemo/basic"))
