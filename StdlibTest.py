@@ -4,12 +4,15 @@
 '''
 操作系统接口 os
 '''
+import datetime
 import os
 
 # 操作cmd 命令
 # print(os.popen('start.'))
 
 # 返回当前的工作目录
+import time
+
 print(os.getcwd())
 
 # 修改当前的工作目录
@@ -209,5 +212,105 @@ print(random.random())
 # 随机获取 限制范围
 print(random.randrange(4, 6))
 print(random.randrange(6))  # 0-6
+
+print("==================================================================")
+
+'''
+访问互联网 http 
+'''
+#处理get请求，不传data，则为get请求
+
+import urllib
+from urllib.request import urlopen
+from urllib.parse import urlencode
+
+url='http://www.xxx.com/login'
+data={"username":"admin","password":123456}
+req_data=urlencode(data)#将字典类型的请求数据转变为url编码
+res=urlopen(url+'?'+req_data)#通过urlopen方法访问拼接好的url
+res=res.read().decode()#read()方法是读取返回数据内容，decode是转换返回数据的bytes格式为str
+
+print(res)
+#处理post请求,如果传了data，则为post请求
+
+import urllib
+from urllib.request import Request
+from urllib.parse import urlencode
+
+url='http://www.xxx.com/login'
+data={"username":"admin","password":123456}
+data=urlencode(data)#将字典类型的请求数据转变为url编码
+data=data.encode('ascii')#将url编码类型的请求数据转变为bytes类型
+req_data=Request(url,data)#将url和请求数据处理为一个Request对象，供urlopen调用
+with urlopen(req_data) as res:
+    res=res.read().decode()#read()方法是读取返回数据内容，decode是转换返回数据的bytes格式为str
+
+print(res)
+
+print("==================================================================")
+'''
+发送邮件
+import smtplib
+'''
+# import smtplib
+#
+# server = smtplib.SMTP('localhost')
+# server.sendmail('soothsayer@example.org', 'jcaesar@example.org',
+#                 """To: jcaesar@example.org
+#                  From: soothsayer@example.org
+#
+#                  Beware the Ides of March.
+#                 """)
+# server.quit()
+
+print("==================================================================")
+
+'''
+日期和时间
+'''
+from datetime import date
+
+now = date.today()
+print(now)
+
+# 格式化
+print(now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d day of %B."))
+
+birthday = date(1964, 7, 31)
+age = now - birthday
+print(age.days)
+
+# 今天
+today = datetime.date.today()
+print(today)
+# 昨天
+yesterday = today - datetime.timedelta(days=1)
+print(yesterday)
+# 上个月
+last_month = today.month - 1 if today.month - 1 else 12
+print(last_month)
+# 当前时间戳
+time_stamp = time.time()
+print(time_stamp)
+# 时间戳转datetime
+print(datetime.datetime.fromtimestamp(time_stamp))
+# datetime转时间戳
+print(int(time.mktime(today.timetuple())))
+# datetime转字符串
+today_str = today.strftime("%Y-%m-%d")
+print(today_str)
+# 字符串转datetime
+today = datetime.datetime.strptime(today_str, "%Y-%m-%d")
+print(today)
+# 补时差
+print(today + datetime.timedelta(hours=8))
+
+print("==================================================================")
+
+'''
+数据压缩
+zlib模块
+'''
+import zlib
 
 print("==================================================================")
