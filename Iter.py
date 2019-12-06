@@ -1,4 +1,4 @@
-# python 迭代 iter
+# python 迭代器 iter测试
 
 list = [1, 2, 3, 4]
 it = iter(list)  # 创建迭代器对象
