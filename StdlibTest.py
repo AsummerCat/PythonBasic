@@ -181,6 +181,10 @@ print('tea for too'.replace('too', 'two'))
 m = re.search('[0-9]', "abcd4ef5")
 print(m.group(0))
 
+# re.match函数 re.match 尝试从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。
+print(re.match('www', 'www.runoob.com').span())  # 在起始位置匹配
+print(re.match('com', 'www.runoob.com'))  # 不在起始位置匹配
+
 print("==================================================================")
 
 '''
@@ -312,6 +316,46 @@ print("==================================================================")
 zlib模块
 '''
 import zlib
+
+# 压缩与解压字符串
+
+message = 'abcd1234'
+compressed = zlib.compress(message)
+decompressed = zlib.decompress(compressed)
+
+print('original:', repr(message))
+print('compressed:', repr(compressed))
+print('decompressed:', repr(decompressed))
+
+
+# 压缩和解压文件
+# zlib.compress用于压缩流数据。参数string指定了要压缩的数据流，参数level指定了压缩的级别，它的取值范围是1到9。压缩速度与压缩率成反比，1表示压缩速度最快，而压缩率最低，而9则表示压缩速度最慢但压缩率最高
+## 压缩
+def compress(infile, dst, level=9):
+    infile = open(infile, 'rb')
+    dst = open(dst, 'wb')
+    compress = zlib.compressobj(level)
+    data = infile.read(1024)
+    while data:
+        dst.write(compress.compress(data))
+        data = infile.read(1024)
+    dst.write(compress.flush())
+
+## 解压
+def decompress(infile, dst):
+    infile = open(infile, 'rb')
+    dst = open(dst, 'wb')
+    decompress = zlib.decompressobj()
+    data = infile.read(1024)
+    while data:
+        dst.write(decompress.decompress(data))
+        data = infile.read(1024)
+    dst.write(decompress.flush())
+
+
+if __name__ == "__main__":
+    compress('in.txt', 'out.txt')
+    decompress('out.txt', 'out_decompress.txt')
 
 print("==================================================================")
 
