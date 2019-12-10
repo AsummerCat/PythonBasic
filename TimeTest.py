@@ -2,17 +2,16 @@
 import time;  # 引入time模块
 
 ticks = time.time()
-print ("当前时间戳为:", ticks)
-
+print("当前时间戳为:", ticks)
 
 # 获取当前时间
-#从返回浮点数的时间戳方式向时间元组转换，只要将浮点数传递给如localtime之类的函数。
+# 从返回浮点数的时间戳方式向时间元组转换，只要将浮点数传递给如localtime之类的函数。
 localtime = time.localtime(time.time())
-print ("本地时间为 :", localtime)
+print("本地时间为 :", localtime)
 
 # 获取格式化的时间
-localtime = time.asctime( time.localtime(time.time()) )
-print ("本地时间为 :", localtime)
+localtime = time.asctime(time.localtime(time.time()))
+print("本地时间为 :", localtime)
 
 '''
 格式化时间
@@ -38,5 +37,5 @@ Calendar模块有很广泛的方法用来处理年历和月历，例如打印某
 import calendar
 
 cal = calendar.month(2016, 1)
-print ("以下输出2016年1月份的日历:")
-print (cal)
+print("以下输出2016年1月份的日历:")
+print(cal)
