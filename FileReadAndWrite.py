@@ -34,7 +34,6 @@ f.close()
 
 # 读取文件 读取单行 f.readline() 换行符为 '\n   readline() 如果返回一个空字符串, 说明已经已经读取到最后一行
 f = codecs.open("D:/pythonDdemo/basic/fileTest.txt","r",encoding='utf-8')
- ## 一次性读取
 str=f.readline()
 print(str)
 f.close()
